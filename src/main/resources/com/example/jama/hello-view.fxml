@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Reflection?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="481.0" prefWidth="806.0" style="-fx-background-color: silver;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.jama.HelloController">
+    <children>
+        <Label text="My Image">
+            <graphic>
+                <ImageView fx:id="image_view" fitHeight="481.0" fitWidth="819.0" layoutX="-8.0" layoutY="-2.0" opacity="0.29" smooth="true">
+                    <image>
+                        <Image url="@currencies.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Label>
+        <AnchorPane layoutX="251.0" layoutY="-5.0" prefHeight="487.0" prefWidth="305.0" style="-fx-background-color: #de8d87;">
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+            <cursor>
+                <Cursor fx:constant="DEFAULT" />
+            </cursor>
+            <effect>
+                <Reflection fraction="0.0" topOpacity="0.0" />
+            </effect>
+            <children>
+                <Label layoutX="83.0" layoutY="131.0" prefHeight="42.0" prefWidth="139.0" text="MONATE" textFill="SILVER">
+                    <font>
+                        <Font name="System Bold" size="31.0" />
+                    </font>
+                </Label>
+                <Button fx:id="buy_button" layoutX="83.0" layoutY="213.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="139.0" style="-fx-background-color: silver;" text="Покупка" textAlignment="CENTER" textFill="#00000099">
+                    <font>
+                        <Font name="System Bold" size="15.0" />
+                    </font>
+                </Button>
+                <Button fx:id="sell_button" layoutX="83.0" layoutY="263.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="139.0" style="-fx-background-color: silver;" text="Продажа" textFill="#00000099">
+                    <font>
+                        <Font name="System Bold" size="15.0" />
+                    </font>
+                </Button>
+            </children>
+        </AnchorPane>
+        <Button fx:id="cash_add_button" layoutX="32.0" layoutY="422.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="177.0" style="-fx-background-color: #de8d87;" text="Пополнить кассу" textAlignment="CENTER" textFill="#00000099">
+            <font>
+                <Font name="System Bold" size="15.0" />
+            </font>
+        </Button>
+        <Button fx:id="parameters_button" layoutX="32.0" layoutY="376.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="177.0" style="-fx-background-color: #de8d87;" text="Параметры" textAlignment="CENTER" textFill="#00000099">
+            <font>
+                <Font name="System Bold" size="15.0" />
+            </font>
+        </Button>
+      <Button fx:id="reference_button" layoutX="32.0" layoutY="36.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="177.0" style="-fx-background-color: #de8d87;" text="Спарвка" textAlignment="CENTER" textFill="#00000099">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+    </children>
+</AnchorPane>
