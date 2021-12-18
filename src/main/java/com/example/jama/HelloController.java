@@ -56,8 +56,14 @@ public class HelloController {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Справка.");
             alert.setHeaderText(null);
-            alert.setContentText("Пиши тут текс справку!!!!!!!!!!!");
+            alert.setContentText("Кассир - Тулекеев Темирлан" +
+                    "№1 г. Бишкек, ул. Малдыбаева,");
             alert.showAndWait();
+        });
+
+        sell_button.setOnAction(actionEvent -> {
+            sell_button.getScene().getWindow().hide();
+            load_window("sells-view.fxml");
         });
     }
 

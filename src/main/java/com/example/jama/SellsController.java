@@ -16,7 +16,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-public class AddCashView {
+public class SellsController {
 
     @FXML
     private ResourceBundle resources;
@@ -28,9 +28,6 @@ public class AddCashView {
     private Button back_button;
 
     @FXML
-    private Button reference_button;
-
-    @FXML
     private ToggleGroup currency_group;
 
     @FXML
@@ -40,13 +37,19 @@ public class AddCashView {
     private RadioButton kgs_radio;
 
     @FXML
+    private Button parameters_button;
+
+    @FXML
+    private Button reference_button;
+
+    @FXML
+    private TextField sum_field;
+
+    @FXML
     private RadioButton rub_radio;
 
     @FXML
     private Button submit_button;
-
-    @FXML
-    private TextField sum_field;
 
     @FXML
     private RadioButton usd_radio;
@@ -69,6 +72,11 @@ public class AddCashView {
     @FXML
     void initialize() {
 
+        back_button.setOnAction(actionEvent -> {
+            back_button.getScene().getWindow().hide();
+            load_window("hello-view.fxml");
+        });
+
         DB handler = new DB();
         try {
             ResultSet result = handler.getCash();
@@ -77,51 +85,38 @@ public class AddCashView {
             e.printStackTrace();
         }
 
-        back_button.setOnAction(actionEvent -> {
-            back_button.getScene().getWindow().hide();
-            load_window("hello-view.fxml");
-        });
-
-        reference_button.setOnAction(actionEvent -> {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Справка.");
-            alert.setHeaderText(null);
-            alert.setContentText("Кассир - Тулекеев Темирлан\" +\n" +
-                    "                    \"№1 г. Бишкек, ул. Малдыбаева,");
-            alert.showAndWait();
-        });
-
         submit_button.setOnAction(actionEvent -> {
-            if(!sum_field.getText().equals("") && (kgs_radio.isSelected() || rub_radio.isSelected() ||
-                    usd_radio.isSelected() || eur_radio.isSelected())) {
-                DB dbhanlder = new DB();
-                float amount = Float.parseFloat(sum_field.getText());
-                try {
-                    if(kgs_radio.isSelected())
-                        dbhanlder.updateCash("KGS", amount);
-                    else if(rub_radio.isSelected())
-                        dbhanlder.updateCash("RUB", amount);
-                    else if(usd_radio.isSelected())
-                        dbhanlder.updateCash("USD", amount);
-                    else if(eur_radio.isSelected())
-                        dbhanlder.updateCash("EUR", amount);
+            float amount = Float.parseFloat(sum_field.getText());
+            try {
+                if(kgs_radio.isSelected())
+                    handler.updateCashSells("KGS", amount);
+                else if(rub_radio.isSelected())
+                    handler.updateCashSells("RUB", amount);
+                else if(usd_radio.isSelected())
+                    handler.updateCashSells("USD", amount);
+                else if(eur_radio.isSelected())
+                    handler.updateCashSells("EUR", amount);
 
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Готово.");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Касса успешно обновлена.");
-                    alert.showAndWait();
-                    submit_button.getScene().getWindow().hide();
-                    load_window("hello-view.fxml");
-                } catch (SQLException| ClassNotFoundException e) {
-                    e.printStackTrace();
-                }
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Готово.");
+                alert.setHeaderText(null);
+                alert.setContentText("Касса успешно обновлена.");
+                alert.showAndWait();
+            } catch (SQLException| ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+            try {
+                ResultSet result = handler.getCash();
+                show_table_cash(result);
+            } catch (ClassNotFoundException | SQLException e) {
+                e.printStackTrace();
             }
         });
     }
 
     private void show_table_cash(ResultSet cash) {
 
+        currency_table.getItems().clear();
         String[] array_currency = {"KGS", "RUB", "USD", "EUR"};
         for (int i = 0; i < 4; i++) {
             currency_list.add(new Cash(array_currency[i], 0));
@@ -142,13 +137,12 @@ public class AddCashView {
         }
 
         kgs_col.setCellValueFactory(new PropertyValueFactory<Cash, Float>("amount"));
-        table_cash.setItems(cash_list); // ОТОБРАЖЕНИЕ ТАБЛИЦЫ
+        table_cash.setItems(cash_list);
     }
-
 
     private void load_window(String url) {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(AddCashView.class.getResource(url));
+        loader.setLocation(HelloController.class.getResource(url));
 
         try {
             loader.load();
@@ -161,4 +155,5 @@ public class AddCashView {
         stage.setScene(new Scene(root));
         stage.show();
     }
+
 }
