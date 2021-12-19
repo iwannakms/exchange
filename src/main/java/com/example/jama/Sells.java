@@ -1,11 +1,13 @@
 package com.example.jama;
 
+import java.util.Date;
+
 public class Sells {
     private String name;
     private float amount;
-    private String date;
+    private Date date;
 
-    public Sells(String name, float amount, String date) {
+    public Sells(String name, float amount, Date date) {
         this.name = name;
         this.amount = amount;
         this.date = date;
@@ -27,11 +29,11 @@ public class Sells {
         this.amount = amount;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 }
