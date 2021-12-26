@@ -87,7 +87,7 @@ public class AddCashView {
             alert.setTitle("Справка.");
             alert.setHeaderText(null);
             alert.setContentText("Кассир - Тулекеев Темирлан\" +\n" +
-                    "                    \"№1 г. Бишкек, ул. Малдыбаева,");
+                    "                    \"№1 г. Бишкек, ул. Малдыбаева 20.12.21г.");
             alert.showAndWait();
         });
 

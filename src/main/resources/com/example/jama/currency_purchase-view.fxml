@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.effect.Reflection?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="481.0" prefWidth="806.0" style="-fx-background-color: silver;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.jama.PurchaseController">
+   <children>
+      <Label />
+      <AnchorPane layoutX="-3.0" prefHeight="58.0" prefWidth="813.0" style="-fx-background-color: #de8d87;">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+         <effect>
+            <Reflection fraction="0.0" topOpacity="0.0" />
+         </effect>
+         <children>
+            <Label layoutX="24.0" layoutY="7.0" prefHeight="42.0" prefWidth="139.0" text="MONATE" textFill="SILVER">
+               <font>
+                  <Font name="System Bold" size="31.0" />
+               </font>
+            </Label>
+            <Button fx:id="back_button" layoutX="689.0" layoutY="15.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="110.0" style="-fx-background-color: #de8d87; -fx-border-color: silver;" text="Назад" textAlignment="CENTER" textFill="#c0c0c099">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="450.0" fitWidth="830.0" layoutX="-11.0" layoutY="59.0" opacity="0.29">
+         <image>
+            <Image url="@currencies.png" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="261.0" layoutY="20.0" prefHeight="475.0" prefWidth="296.0" style="-fx-background-color: #de8d87;">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+         <effect>
+            <Reflection fraction="0.0" topOpacity="0.0" />
+         </effect>
+         <children>
+            <RadioButton fx:id="kgs_radio3" layoutX="74.0" layoutY="64.0" mnemonicParsing="false" text="KGS">
+               <toggleGroup>
+                  <ToggleGroup fx:id="currency_group3" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="usd_radio3" layoutX="169.0" layoutY="64.0" mnemonicParsing="false" text="USD" toggleGroup="$currency_group3" />
+            <RadioButton fx:id="rub_radio3" layoutX="74.0" layoutY="98.0" mnemonicParsing="false" text="RUB" toggleGroup="$currency_group3" />
+            <RadioButton fx:id="eur_radio3" layoutX="169.0" layoutY="98.0" mnemonicParsing="false" text="EUR" toggleGroup="$currency_group3" />
+            <TextField fx:id="sum_field" layoutX="69.0" layoutY="132.0" prefHeight="31.0" prefWidth="149.0" promptText="Сумма" />
+            <Button fx:id="submit_button" layoutX="126.0" layoutY="421.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="45.0" style="-fx-background-color: silver;" text="ОК" textFill="#00000099">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <TableView fx:id="table_cash" layoutX="141.0" layoutY="194.0" prefHeight="123.0" prefWidth="110.0">
+               <columns>
+                  <TableColumn fx:id="kgs_col" prefWidth="105.0" text="Сумма" />
+               </columns>
+            </TableView>
+            <TableView fx:id="currency_table" layoutX="36.0" layoutY="194.0" prefHeight="123.0" prefWidth="107.0">
+               <columns>
+                  <TableColumn fx:id="currency_col" prefWidth="105.0" text="Валюта" />
+               </columns>
+            </TableView>
+            <RadioButton fx:id="kgs_radio4" layoutX="79.0" layoutY="343.0" mnemonicParsing="false" text="KGS">
+               <toggleGroup>
+                  <ToggleGroup fx:id="currency_group4" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="usd_radio4" layoutX="174.0" layoutY="343.0" mnemonicParsing="false" text="USD" toggleGroup="$currency_group4" />
+            <RadioButton fx:id="rub_radio4" layoutX="79.0" layoutY="377.0" mnemonicParsing="false" text="RUB" toggleGroup="$currency_group4" />
+            <RadioButton fx:id="eur_radio4" layoutX="174.0" layoutY="377.0" mnemonicParsing="false" text="EUR" toggleGroup="$currency_group4" />
+         </children>
+      </AnchorPane>
+      <Button fx:id="show_purchase_button" layoutX="33.0" layoutY="424.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="177.0" style="-fx-background-color: #de8d87;" text="Покупки" textAlignment="CENTER" textFill="#00000099">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

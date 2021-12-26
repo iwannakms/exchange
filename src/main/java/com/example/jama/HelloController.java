@@ -65,6 +65,11 @@ public class HelloController {
             sell_button.getScene().getWindow().hide();
             load_window("sells-view.fxml");
         });
+
+        buy_button.setOnAction(actionEvent -> {
+            buy_button.getScene().getWindow().hide();
+            load_window("currency_purchase-view.fxml");
+        });
     }
 
     private void load_window(String url) {
